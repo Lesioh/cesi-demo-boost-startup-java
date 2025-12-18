@@ -42,6 +42,12 @@ jobs:
   secure-iac-dockerfile-scan:
     needs: build-and-test
     uses: ./.github/workflows/secure-iac-dockerfile-scan.yml
+
+  #ETAPE 6 : Build Docker & Scan
+  build-and-scan-docker:
+    needs: [code-quality-sast, secret-scanning, secure-iac-dockerfile-scan]
+    uses: ./.github/workflows/build-docker-image.yml
+    secrets: inherit
   
 #  placeholder:
 #    name: Pipeline Principal - En Construction
