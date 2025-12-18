@@ -22,7 +22,10 @@ jobs:
   build-and-test:
     uses: ./.github/workflows/build-unit-tests.yml
 
-
+  #ETAPE 2 : Analyse de sécurité statique
+  code-quality-sast:
+    needs: build-and-test
+    uses: ./.github/workflows/code-quality-sast.yml
   
 #  placeholder:
 #    name: Pipeline Principal - En Construction
