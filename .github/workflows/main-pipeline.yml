@@ -68,33 +68,33 @@ jobs:
     secrets: inherit
 
   #ETAPE 10 : Notifications
-send-notifications:
-  name: Send Notifications
-  needs:
-    - build-and-test
-    - code-quality-sast
-    - secret-scanning
-    - sca-dependency-scan
-    - secure-iac-dockerfile-scan
-    - build-and-scan-docker
-    - deploy-docker
-  runs-on: ubuntu-latest
-  if: always()
+  send-notifications:
+    name: Send Notifications
+    needs:
+      - build-and-test
+      - code-quality-sast
+      - secret-scanning
+      - sca-dependency-scan
+      - secure-iac-dockerfile-scan
+      - build-and-scan-docker
+      - deploy-production-server
+    runs-on: ubuntu-latest
+    if: always()
 
-  steps:
-    - name: 📊 Check pipeline status
-      run: |
-        echo "═══════════════════════════════════════"
-        echo "📊 PIPELINE STATUS REPORT"
-        echo "═══════════════════════════════════════"
-        echo "Build & Test: ${{ needs.build-and-test.result }}"
-        echo "SAST: ${{ needs.code-quality-sast.result }}"
-        echo "Secret Scanning: ${{ needs.secret-scanning.result }}"
-        echo "SCA: ${{ needs.sca-dependency-scan.result }}"
-        echo "IaC Security: ${{ needs.secure-iac-dockerfile-scan.result }}"
-        echo "Docker Build: ${{ needs.build-and-scan-docker.result }}"
-        echo "Deployment: ${{ needs.deploy-docker.result }}"
-        echo "═══════════════════════════════════════"
+    steps:
+      - name: 📊 Check pipeline status
+        run: |
+          echo "═══════════════════════════════════════"
+          echo "📊 PIPELINE STATUS REPORT"
+          echo "═══════════════════════════════════════"
+          echo "Build & Test: ${{ needs.build-and-test.result }}"
+          echo "SAST: ${{ needs.code-quality-sast.result }}"
+          echo "Secret Scanning: ${{ needs.secret-scanning.result }}"
+          echo "SCA: ${{ needs.sca-dependency-scan.result }}"
+          echo "IaC Security: ${{ needs.secure-iac-dockerfile-scan.result }}"
+          echo "Docker Build: ${{ needs.build-and-scan-docker.result }}"
+          echo "Deployment: ${{ needs.deploy-production-server.result }}"
+          echo "═══════════════════════════════════════"
 
   
 #  placeholder:
