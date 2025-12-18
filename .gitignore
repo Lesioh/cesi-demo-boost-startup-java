@@ -4,6 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+# Ne jamais commiter de fichiers de configuration avec secrets
+config/
+
 ### STS ###
 .apt_generated
 .classpath
