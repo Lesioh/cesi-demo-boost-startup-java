@@ -60,6 +60,12 @@ jobs:
     needs: [publish-docker-hub]
     uses: ./.github/workflows/dast-zap-test.yml
     secrets: inherit
+
+  #ETAPE 9 : Déploiement Production
+  deploy-production-server:
+    needs: [dast-zap-test]
+    uses: ./.github/workflows/deploy-production-server.yml
+    secrets: inherit
   
 #  placeholder:
 #    name: Pipeline Principal - En Construction
