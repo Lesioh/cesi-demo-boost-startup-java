@@ -31,6 +31,12 @@ jobs:
   secret-scanning:
     needs: build-and-test
     uses: ./.github/workflows/secret-scanning.yml
+
+  #ETAPE 4 : Analyse des dépendances
+  sca-dependency-scan:
+    needs: build-and-test
+    uses: ./.github/workflows/sca-dependency-scan.yml
+    secrets: inherit
   
 #  placeholder:
 #    name: Pipeline Principal - En Construction
