@@ -42,6 +42,7 @@ jobs:
             sleep 10
             curl -f http://localhost:${{ secrets.DEPLOY_APPLI_PORT }} || exit 1
             docker image prune -af --filter "until=24h"
+            echo ${{ secrets.DEPLOY_APPLI_PORT }}
       - name: Verify deployment
         run: |
           curl -f http://localhost:${{ secrets.DEPLOY_APPLI_PORT }}
