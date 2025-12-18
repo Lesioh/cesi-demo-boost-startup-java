@@ -54,6 +54,12 @@ jobs:
     needs: [build-and-scan-docker]
     uses: ./.github/workflows/publish-docker-hub.yml
     secrets: inherit
+
+  #ETAPE 8 : Tests de Sécurité Dynamiques (DAST) (Après publication Docker Hub)
+  dast-zap-test:
+    needs: [publish-docker-hub]
+    uses: ./.github/workflows/dast-zap-test.yml
+    secrets: inherit
   
 #  placeholder:
 #    name: Pipeline Principal - En Construction
