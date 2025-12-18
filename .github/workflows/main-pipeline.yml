@@ -37,6 +37,11 @@ jobs:
     needs: build-and-test
     uses: ./.github/workflows/sca-dependency-scan.yml
     secrets: inherit
+
+  #ETAPE 5 : Sécurité Infrastructure as Code
+  secure-iac-dockerfile-scan:
+    needs: build-and-test
+    uses: ./.github/workflows/secure-iac-dockerfile-scan.yml
   
 #  placeholder:
 #    name: Pipeline Principal - En Construction
